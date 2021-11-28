@@ -1,9 +1,8 @@
 #include <iostream>
-
-
-
+#include "MyHashMap.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    HashTable<int, int> table{};
+    std::cout << table.size();
     return 0;
 }
