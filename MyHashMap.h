@@ -161,7 +161,7 @@ HashTable<K, V> &HashTable<K, V>::operator=(const HashTable &b) {
 
 template<typename K, typename V>
 HashTable<K, V> &HashTable<K, V>::operator=(HashTable &&b) noexcept {
-    if(b != this) {
+    if(&b != this) {
         elementsCount = b.elementsCount;
         delete[] table;
         table = b.table;
@@ -232,7 +232,7 @@ V const &HashTable<K, V>::at(const K &k) const {
     Item *item = list.find(k);
     if(item != nullptr)
         return item->value();
-    return V();
+    throw std::runtime_error("Hashmap::&at(const K&) const: key not found");
 }
 
 template<typename K, typename V>
